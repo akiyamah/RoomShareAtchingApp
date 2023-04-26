@@ -11,7 +11,7 @@ services:
     env: python
     region: singapore
     plan: free
-    branch: test
+    branch: main
     buildCommand: "./build.sh"
     startCommand: "gunicorn mysite.wsgi:application"
     envVars:

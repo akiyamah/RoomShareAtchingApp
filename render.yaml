@@ -3,14 +3,14 @@ databases:
     databaseName: room_share_matching_db
     user: db_user
     region: singapore
-    plan: free
+    plan: starter
 
 services:
   - type: web
     name: room_share_matching
     env: python
     region: singapore
-    plan: free
+    plan: starter
     branch: main
     buildCommand: "./build.sh"
     startCommand: "gunicorn matching.wsgi:application"

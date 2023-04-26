@@ -1,0 +1,12 @@
+django==3.2.18
+dj-database-url 
+dj-static 
+python-decouple 
+django-environ 
+gunicorn 
+psycopg2-binary 
+whitenoise
+Pillow
+scikit-learn
+python-dateutil
+pandas

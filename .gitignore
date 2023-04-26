@@ -1,1 +1,10 @@
+__pycache__/
+*.pyc
+*.pyo
+*.log
+db.sqlite3
 .env
+*.swp
+*.swo
+*.bak
+*.orig

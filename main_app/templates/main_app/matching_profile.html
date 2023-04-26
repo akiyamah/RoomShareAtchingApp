@@ -1,0 +1,39 @@
+{% extends 'main_app/base.html' %}
+
+{% block content %}
+{% include 'main_app/menu_buttons.html' %}
+
+<h2><i class="bi bi-pencil-square"></i> プロフィール編集</h2>
+<!-- message -->
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      {% if message.tags == 'success' %}
+        <li class="alert alert-success" role="alert">{{ message }}</li>
+      {% elif message.tags == 'error' %}
+        <li class="alert alert-danger" role="alert">{{ message }}</li>
+      {% else %}
+        <li class="alert alert-info" role="alert">{{ message }}</li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+{% endif %}
+<!-- profile -->
+<div class="card mt-4">
+  <div class="card-body" style="background-color: #f8f9fa;">
+    <h5 class="card-title">プロフィール情報</h5>
+    <p class="card-text"></p>
+      <form method="post" action="{% url 'main_app:update_matching_profile' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ purpose_form.as_p }}
+        {{ cohabitation_form.as_p }}
+        {{ layout_form.as_p }}
+        {{ rent_form.as_p }}
+        {{ roommate_preference_form.as_p }}
+        {{ profile_form.as_p }}
+        
+        <button type="submit" class="btn btn-primary">保存</button>
+      </form>
+  </div>
+</div>
+{% endblock content %}

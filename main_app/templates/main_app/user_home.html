@@ -1,0 +1,37 @@
+{% extends 'main_app/base.html' %}
+{% block content %}
+{% include 'main_app/menu_buttons.html' %}
+<h2><i class="bi bi-house"></i>ホーム</h2>
+<div class="card">
+    <div class="card-body" style="background-color: #f8f9fa;">
+        <h5 class="card-title">こんにちは、{{ user.username }} さん！</h5>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{{ user_profile.profile_image.url }}" alt="プロフィール画像" class="img-thumbnail" style="width: 150px; height: 150px;">
+            </div>
+            <div class="col-md-8">
+                <p>名前: {{ user_profile.user_name|default:"未登録" }} <i class="bi bi-person"></i></p>
+                <p>性別: {{ user_profile.sex|default:"未登録" }} 
+                    {% if user_profile.sex == "男性" %}<i class="bi bi-gender-male"></i>
+                    {% elif user_profile.sex == "女性" %}<i class="bi bi-gender-female"></i>
+                    {% else %}<i class="bi bi-gender-trans"></i>
+                    {% endif %}
+                </p>
+                <p>誕生日: {{ user_profile.day_of_birth|default:"未登録" }} <i class="bi bi-calendar"></i></p>
+                <p>自己紹介: {{ user_profile.self_introduction|default:"未登録" }} </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mt-3">
+    <h3>アプリの使い方</h3>
+    <ol>
+        {% for title, content in instructions.items %}
+        <li>
+            <h4>{{ title }}</h4>
+            <p>{{ content }}</p>
+        </li>
+        {% endfor %}
+    </ol>
+</div>
+{% endblock content %}
